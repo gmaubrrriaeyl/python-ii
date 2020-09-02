@@ -93,13 +93,10 @@ def main():
                 try:
                     x = Contact(x[0], x[1], x[2])
                 except:
-                    print("Incorrect format. Please try again.")
-            
+                    print("Invalid input. Please check format and try again.")
             continue
+        
         elif option == 3:
             return print("Goodbye World!")
-
-
-
-if __name__ == "main":
-    main()
+        
+main()
