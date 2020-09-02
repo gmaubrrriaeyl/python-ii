@@ -14,7 +14,6 @@ Must have the followin functionality
 class Contact:
     counter = 0
     roster = []
-    names =[]
     
     def getCount():
         return Contact.counter
@@ -97,8 +96,6 @@ def main():
             
             continue
         elif option == 3:
-            global pickle_roster
-            pickle_roster = pickle.dumps(Contact.roster)
             return print("Goodbye World!")
 
 
