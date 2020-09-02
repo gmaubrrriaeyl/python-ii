@@ -18,10 +18,11 @@ class Contact:
     def getCount():
         return Contact.counter
     
-    def __init__(self, last, first): #Constructor
+    def __init__(self, last, first, email): #Constructor
         
         self.first = first.title()
         self.last = last.title()
+        self.email = email
         self.full = first.title() + ' ' + last.title()
 
         if not any(i['full'] == self.full for i in Contact.roster):        
@@ -32,6 +33,7 @@ class Contact:
             entry = {
                 'first' : first,
                 'last' : last,
+                'email' : email,
                 'ID' : ID,
                 'full' : full
                 }
@@ -44,20 +46,19 @@ class Contact:
 
     
     def getRoster(): #Accessors
-        print("="*20)
+        print("="*65)
+        print("{0:<20}{1:20}{2:20}".format('First Name','Last Name','Email'))
         for i in range(Contact.counter):
-            print('First Name: ' + Contact.roster[i]['first'])
-            print('Last Name:  ' + Contact.roster[i]['last'])
-        print("="*20)
-        print('')
+            print("{0:<20}{1:20}{2:20}".format(Contact.roster[i]['first'],Contact.roster[i]['last'],Contact.roster[i]['email']))
+        print("="*65)
 
 
     def getContact(self):
         return self.full
 
 
-gabe = Contact('murray', 'gabe') #Few defaults for the roster
-prof = Contact('prather', 'mark')
+gabe = Contact('murray', 'gabe', 'murray@email.com') #Few defaults for the roster
+prof = Contact('prather', 'mark', 'prather@email.com')
 
 
 def main():
@@ -81,16 +82,16 @@ def main():
             continue
         
         if option == 1:
-            print('')
             Contact.getRoster()
             continue
+        
         elif option == 2:
-            x = input("Enter contact in the following format: Doe, John" + '\n')
+            x = input("Enter contact in the following format: LastName, FirstName, Email" + '\n')
             x = x.split(',')
             x = [x.strip() for x in x]
             if x not in Contact.roster:
                 try:
-                    x = Contact(x[0], x[1])
+                    x = Contact(x[0], x[1], x[2])
                 except:
                     print("Incorrect format. Please try again.")
             
