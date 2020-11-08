@@ -14,7 +14,7 @@ class DataList(wx.Frame):
 
     #Class variables
     url = 'https://finnhub.io/api/v1/quote?symbol='
-    key = 'buc5bef48v6oa2u4gu90'
+    key = '' #Must have a key for program to work. Easy, free to obtain at finnhub.io.
     
     def __init__(self, parent, id, title):
         wx.Frame.__init__(self, parent, id, title, size=(680, 500))
