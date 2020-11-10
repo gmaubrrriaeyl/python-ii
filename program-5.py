@@ -9,7 +9,6 @@ Admins: view all data
 
 
 
-'''
 emp_id = request.forms.get('emp_id')
 
 
@@ -22,23 +21,22 @@ elif role == 'tech':
     return template('enter_trip_data', data)    # tech template
 else:
     return "login failed"
-    
-''''
 
 
-'''
-login
+
+
+##login
 @route('/login', method='POST')
 def login():
     user = request.forms.get('username')         # get form data
     pw = request.forms.get('password')
     pw = pw.encode('utf-8')
     pw = hashlib.sha1(pw).hexdigest()         # hash the password  
-'''
+
+##########
 
 
-'''
-sql statements
+#sql statements
 
 #Obtain role from sql database using username and password
 sql = 'SELECT role FROM members WHERE username = ? AND password = ?'
@@ -62,4 +60,4 @@ record.append(request.forms.get('Gallons Used'))
 
 INSERT INTO trips VALUES(?, ?, ?, ?, ?, ?)
 cur.execute(sql, record)
-'''
+
